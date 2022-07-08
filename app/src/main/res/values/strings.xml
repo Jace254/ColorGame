@@ -3,4 +3,8 @@
     <string name="level">Level</string>
     <string name="colorname">ColorName</string>
     <string name="items">4</string>
+    <string name="yellow">yellow</string>
+    <string name="red">red</string>
+    <string name="green">green</string>
+    <string name="blue">blue</string>
 </resources>

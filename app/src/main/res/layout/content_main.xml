@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:padding="4dp">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -32,42 +33,44 @@
         android:gravity="center"
         android:orientation="vertical">
 
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/color_image_view"
+        <LinearLayout
+            android:id="@+id/color_items"
             android:layout_width="match_parent"
-            android:layout_height="110dp"
-            android:layout_gravity="center"
-            app:spanCount="4"
-            tools:ignore="SpeakableTextPresentCheck"
-            tools:layoutManager="GridLayoutManager"
-            tools:listitem="@layout/color_box_image">
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_margin="5dp"
-                android:gravity="center"
-                tools:src="@tools:sample/avatars" />
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_margin="5dp"
-                android:gravity="center"
-                tools:src="@tools:sample/avatars" />
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_margin="5dp"
-                android:gravity="center"
-                tools:src="@tools:sample/avatars" />
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_margin="5dp"
-                android:gravity="center"
-                tools:src="@tools:sample/avatars" />
+            android:layout_height="100dp"
+            android:orientation="horizontal">
 
-        </androidx.recyclerview.widget.RecyclerView>
+            <ImageView
+                android:id="@+id/imageViewYellow"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:contentDescription="@string/yellow"
+                app:srcCompat="@drawable/ic_yellow" />
 
+            <ImageView
+                android:id="@+id/imageViewRed"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:contentDescription="@string/red"
+                app:srcCompat="@drawable/ic_red" />
+
+            <ImageView
+                android:id="@+id/imageViewGreen"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:contentDescription="@string/green"
+                app:srcCompat="@drawable/ic_green" />
+
+            <ImageView
+                android:id="@+id/imageViewBlue"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:contentDescription="@string/blue"
+                app:srcCompat="@drawable/ic_blue" />
+        </LinearLayout>
     </LinearLayout>
 
 
