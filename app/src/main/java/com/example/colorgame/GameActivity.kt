@@ -34,6 +34,7 @@ class GameActivity : AppCompatActivity() {
        //colorItems.layoutManager = GridLayoutManager(this,size)
         //colorItems.adapter = ImageRecyclerAdapter(this,DataManager.colors)
         val colorItems = binding.content.colorItems
+        var viewRemoved = false
         for(item in colorItems){
             item.setOnLongClickListener {
                 val clipText = "color ${item.contentDescription.toString()}"
@@ -61,13 +62,19 @@ class GameActivity : AppCompatActivity() {
                     view.invalidate()
                     true
                 }
-                DragEvent.ACTION_DROP -> false
+                DragEvent.ACTION_DROP -> {
+                    viewRemoved = true
+                    false
+                }
                 DragEvent.ACTION_DRAG_ENDED -> {
+                    val v = event.localState as View
+                    v.visibility = View.VISIBLE
                     view.invalidate()
                     true
                 }
                 else -> false
             }
+
         }
         colorItems.setOnDragListener(dragListener)
 

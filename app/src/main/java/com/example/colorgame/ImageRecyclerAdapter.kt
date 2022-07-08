@@ -8,7 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import androidx.recyclerview.widget.RecyclerView
-
+/*
 class ImageRecyclerAdapter(private val context: Context, private val colors: List<Colors>):
     RecyclerView.Adapter<ImageRecyclerAdapter.viewHolder>(){
     private val layoutInflater = LayoutInflater.from(context)
@@ -51,4 +51,5 @@ class ImageRecyclerAdapter(private val context: Context, private val colors: Lis
 
     override fun getItemCount() = colors.size
 
-}
+}*/
+

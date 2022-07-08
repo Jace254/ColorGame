@@ -8,6 +8,7 @@ import android.view.DragEvent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
@@ -20,12 +21,14 @@ class colorBoxRecyclerAdpater(private val context: Context, private var colorBox
     private val colorB = colorBoxes.shuffled()
 
 
+
     inner class viewHolder(itemView: View?): RecyclerView.ViewHolder(itemView!!){
         val colorName = itemView?.findViewById<TextView>(R.id.color_name)
         val colorBox = itemView?.findViewById<LinearLayout>(R.id.color_view)
         var colorBoxPosition = 0
         init{
             Drag()
+
         }
 
         private fun Drag() {
@@ -39,12 +42,9 @@ class colorBoxRecyclerAdpater(private val context: Context, private var colorBox
                         view.invalidate()
                         true
                     }
-                    DragEvent.ACTION_DRAG_LOCATION -> true
+                    DragEvent.ACTION_DRAG_LOCATION -> false
 
-                    DragEvent.ACTION_DRAG_EXITED -> {
-                        view.invalidate()
-                        true
-                    }
+                    DragEvent.ACTION_DRAG_EXITED -> false
                     DragEvent.ACTION_DROP -> {
                         view.invalidate()
 
@@ -53,12 +53,13 @@ class colorBoxRecyclerAdpater(private val context: Context, private var colorBox
                         owner.removeView(v)
                         val destination = view as LinearLayout
                         destination.addView(v)
-                        v.visibility = View.VISIBLE
 
                         checkWin(v,destination)
                         true
                     }
                     DragEvent.ACTION_DRAG_ENDED -> {
+                        val v = event.localState as View
+                        v.visibility = View.VISIBLE
                         view.invalidate()
                         true
                     }
@@ -84,26 +85,12 @@ class colorBoxRecyclerAdpater(private val context: Context, private var colorBox
     override fun onBindViewHolder(holder: viewHolder, position: Int) {
         Log.i("pos","${position}")
         Log.i("color","${colorB[position]}")
-        val colorBox = colorB[position]
-        holder.colorName?.text = colorBox.colorName
+        val colorB = colorB[position]
+        holder.colorName?.text = colorB.colorName
         holder.colorBoxPosition = position
 
     }
 
     override fun getItemCount() = colorBoxes.size
-
-    fun <T> shuffle(list: MutableList<T>) {
-        // start from the beginning of the list
-        for (i in 0 until list.size - 1)
-        {
-            // get a random index `j` such that `i <= j <= n`
-            val j = i + Random.nextInt(list.size - i)
-
-            // swap element at i'th position in the list with the element at j'th position
-            val temp = list[i]
-            list[i] = list[j]
-            list[j] = temp
-        }
-    }
 
 }
